@@ -8,4 +8,4 @@ apk add --no-cache \
   coreutils=${COREUTILS_VERSION}
 
 # Adding entrypoint
-mv /resource/entrypoint.sh /entrypoint.sh
+mv /resources/entrypoint.sh /entrypoint.sh
