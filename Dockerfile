@@ -6,7 +6,7 @@ ENV CURL_VERSION=7.54.0-r0 \
     ESEX_ES_HOST=elasticsearch \
     ESEX_ES_PORT=9200 \
     ESEX_ES_RETENTION_DAYS=15 \
-    ESEX_S3_BUCKET=s3-export-bucket \
+    ESEX_S3_BUCKET=s3-export-bucket
 
 ARG BUILD_DATE
 ARG VCS_REF
