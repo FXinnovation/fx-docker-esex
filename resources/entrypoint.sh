@@ -13,7 +13,7 @@ fi
 
 OUTPUT=$(curl -q \
   -X POST \
-  "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/_verify?format=json | jq -r '.nodes'")
+  "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/_verify?format=json" | jq -r '.nodes')
 
 if [ "${OUTPUT}" != "null" ]; then
   echo "Error: Output was not what was expected"
