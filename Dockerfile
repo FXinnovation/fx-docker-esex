@@ -6,7 +6,9 @@ ENV CURL_VERSION=7.54.0-r0 \
     ESEX_ES_HOST=elasticsearch \
     ESEX_ES_PORT=9200 \
     ESEX_ES_RETENTION_DAYS=15 \
-    ESEX_S3_BUCKET=s3-export-bucket
+    ESEX_S3_BUCKET_NAME=s3-export-bucket \
+    ESEX_S3_BUCKET_REGION=us-east-1 \
+    ESEX_S3_ROLE_ARN="arn:aws:iam::123456789012:role/es-s3-repository"
 
 ARG BUILD_DATE
 ARG VCS_REF
@@ -31,7 +33,7 @@ LABEL "maintainer"="cloudsquad@fxinnovation.com" \
       "org.label-schema.schema-version"="1.0.0-rc.1" \
       "org.label-schema.applications.curl.version"=$CURL_VERSION \
       "org.label-schema.applications.jq.version"=$JQ_VERSION \
-      "org.label-schema.applications.ca-certificates.version"=$JQ_VERSION \
+      "org.label-schema.applications.coreutils.version"=$COREUTILS_VERSION \
       "org.label-schema.vcs-ref"=$VCS_REF \
       "org.label-schema.version"=$VERSION \
       "org.label-schema.build-date"=$BUILD_DATE \
