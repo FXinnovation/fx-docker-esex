@@ -23,6 +23,7 @@ fi
 
 # Building limit_date
 LIMIT_DATE=$(date -d "${ESEX_ES_RETENTION_DAYS} days ago" +"%Y.%m.%d")
+
 # Listing indices
 INDICE_LIST=$(curl -q \
                 -X GET \
@@ -41,7 +42,7 @@ do
     # Asking for export
     OUTPUT=$(curl -q \
       -X PUT \
-      "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/${INDICE}" \
+      "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/${INDICE}?format=json" \
       -d "{\"indices\":\"${INDICE}\",\"include_global_state\":false,\"ignore_unavailable\":false}" | jq -r '.accepted')
 
     if [ "${OUTPUT}" != "true" ]; then
@@ -54,9 +55,10 @@ do
     while [ "${SNAPSHOT_ONGOING}" == "TRUE" ]
     do
       echo "Waiting for snapshot to finish"
+      sleep 5
       STATE=$(curl -q \
         -X GET \
-        "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/${INDICE}?format=json | jq -r '.snapshots[].state'")
+        "${ESEX_ES_HOST}:${ESEX_ES_PORT}/_snapshot/${ESEX_S3_BUCKET_NAME}/${INDICE}?format=json" | jq -r '.snapshots[].state')
       if [ "${STATE}" == "SUCCESS" ]; then
         SNAPSHOT_ONGOING="FALSE"
       else
