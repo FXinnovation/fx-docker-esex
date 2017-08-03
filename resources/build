@@ -1,0 +1,11 @@
+#!/bin/sh
+set -e -x
+
+# Installing tools
+apk add --no-cache \
+  curl=${CURL_VERSION} \
+  jq=${JQ_VERSION} \
+  coreutils=${COREUTILS_VERSION}
+
+# Adding entrypoint
+mv /resource/entrypoint.sh /entrypoint.sh
