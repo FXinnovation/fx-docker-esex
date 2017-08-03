@@ -7,5 +7,14 @@ apk add --no-cache \
   jq=${JQ_VERSION} \
   coreutils=${COREUTILS_VERSION}
 
+# Add esex group
+addgroup -S esex
+
+# Add esex user
+adduser \
+  -s /bin/sh \
+  -G esex \
+  -D esex
+
 # Adding entrypoint
 mv /resources/entrypoint.sh /entrypoint.sh
