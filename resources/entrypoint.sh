@@ -66,9 +66,14 @@ do
       fi
     done
     # Asking for deletion
-    curl -q \
+    OUTPUT=$(curl -q \
       -X DELETE \
-    "${ESEX_ES_HOST}:${ESEX_ES_PORT}/${INDICE}?format=json"
+    "${ESEX_ES_HOST}:${ESEX_ES_PORT}/${INDICE}?format=json" |jq -r '.acknowledged')
+
+    if [ "${OUTPUT}" != "true" ]; then
+      echo "Error: Output was not what was expected"
+      exit 5
+    fi
   else
     echo "Indice: '${INDICE}' is to recent for export, skipping."
   fi
