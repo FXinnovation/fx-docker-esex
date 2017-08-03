@@ -18,7 +18,7 @@ do
   # Fetching current indice date
   INDICE_DATE=$(echo ${INDICE} | awk -F "-" '{ print $NF }')
   # If the indice date is smaller then the limit data
-  if [ "${INDICE_DATE}" < "${LIMIT_DATE}" ]; then
+  if [ "${INDICE_DATE}" \< "${LIMIT_DATE}" ]; then
     echo "Indice: '${INDICE}' is going to be snapshoted"
     # Asking for export
     
