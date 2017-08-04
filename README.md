@@ -23,6 +23,8 @@ docker run --rm -e [KEY]=[VALUE] fxinnovation/esex:[TAG]
 
 *Note: You can find information for setting this up usig AWS ES Service here: https://aws.amazon.com/blogs/database/use-amazon-s3-to-store-a-single-amazon-elasticsearch-service-index/*
 
+*Note: For now, this container is basically a shell script, altough I know this is not ideal, this was the quickest way to have something working. Once there will be some time, we will make this tool evolve into something a bit more evolved*
+
 ## Labels
 We set labels on our images with additional information on the image. we follow the guidelines defined at http://label-schema.org/. Visit their website for more information about those labels.
 
