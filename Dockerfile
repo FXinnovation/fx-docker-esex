@@ -1,6 +1,6 @@
 FROM alpine:3.6
 
-ENV CURL_VERSION=7.54.0-r0 \
+ENV CURL_VERSION=7.55.0-r0 \
     JQ_VERSION=1.5-r3 \
     COREUTILS_VERSION=8.27-r0 \
     ESEX_ES_HOST=elasticsearch \
